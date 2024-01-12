@@ -42,10 +42,22 @@ document.getElementById("order-action").onclick = function () {
         }
     });
 
-    if(!hasError) {
+  if (!hasError) {
+        // Create an object with the order information
+        let orderInfo = {
+            burger: burger.value,
+            name: name.value,
+            phone: phone.value,
+        };
+
+        // Save the order information to local storage
+        localStorage.setItem('order', JSON.stringify(orderInfo));
+
+        // Clear input values
         [burger, name, phone].forEach(item => {
             item.value = "";
         });
+
         alert("Спасибо за заказ! Мы скоро свяжемся с вами!");
     }
 }
